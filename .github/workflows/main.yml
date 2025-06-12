@@ -26,13 +26,13 @@ jobs:
             - name: Sincronizar proyecto en el servidor 
               uses: burnett01/rsync-deployments@7.0.2
               with:
-                switches: "-avz --delete"
-                path: "./"
-                remote_host: ${{ secrets.IP_SERVER }}
-                remote_user: ${{ secrets.USERNAME  }}
-                rmeote_path: "/home/ubuntu/java"
-                remote_key: ${{ secrets.KEY }}
-                remote_port: ${{ secrets.PORT }}
+                switches: "-avz --delete"  # Opciones de rsync
+                path: "./"  # Directorio de origen (los archivos del repositorio)
+                remote_host: ${{ secrets.IP_SERVER }}  # Dirección IP del servidor
+                remote_user: ${{ secrets.USERNAME }}  # Usuario SSH en el servidor
+                remote_path: "/home/ubuntu/java/"  # Ruta de destino en el servidor
+                remote_key: ${{ secrets.KEY }}  # Clave SSH para autenticar
+                remote_port: ${{ secrets.PORT }}  # Puerto SSH (si es distinto del predeterminado 22)
 
 
             - name: Levantar docker con docker compose 
